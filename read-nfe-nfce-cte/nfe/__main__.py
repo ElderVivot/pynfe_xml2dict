@@ -1,6 +1,7 @@
 import os
 import sys
 from typing import Union, Dict
+import json
 
 dirNameSrc = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 sys.path.append(dirNameSrc)
@@ -10,6 +11,7 @@ from utils.functions import returnDataInDictOrArray
 from utils.read_xml import readXml
 from nfe.tag_ide import TagIde
 from nfe.tag_emit import TagEmit
+from nfe.tag_dest import TagDest
 from nfe.tag_det import TagDet
 
 
@@ -31,6 +33,11 @@ class IndexNfe():
         dataTagEmit = returnDataInDictOrArray(self._dataXml, ['nfeProc', 'NFe', 'infNFe', 'emit'])
         tagEmit = TagEmit(dataTagEmit)
         self._objNf['emitente'] = tagEmit.getData()
+
+    def _tagDest(self):
+        dataTagDest = returnDataInDictOrArray(self._dataXml, ['nfeProc', 'NFe', 'infNFe', 'dest'])
+        tagDest = TagDest(dataTagDest)
+        self._objNf['destinatario'] = tagDest.getData()
 
     def _tagDet(self):
         listTagsDet = []
@@ -56,6 +63,7 @@ class IndexNfe():
         self._objNf['chave_nota'] = returnDataInDictOrArray(self._dataXml, ['nfeProc', 'NFe', 'infNFe', '@Id'])[3:]
         self._tagIde()
         self._tagEmit()
+        self._tagDest()
         self._tagDet()
         self._tagTotal()
 
@@ -64,4 +72,4 @@ class IndexNfe():
 
 if __name__ == '__main__':
     indexNfe = IndexNfe('/home/eldervivot/Programming/microservices/read-xml-nfe-nfce-cte/data/nfe2.xml')
-    print(indexNfe.process())
+    print(json.dumps(indexNfe.process(), indent=4))

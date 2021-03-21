@@ -16,8 +16,8 @@ class TagDest():
     def _getCnpjOrCpf(self):
         cnpj = returnDataInDictOrArray(self._dataTagDest, ['CNPJ'])
         cpf = returnDataInDictOrArray(self._dataTagDest, ['CPF'])
-        self._idEstrangeiro = returnDataInDictOrArray(self._dataTagDest, ['idEstrangeiro'])
-        if self._idEstrangeiro != '':
+        self._idEstrangeiro = returnDataInDictOrArray(self._dataTagDest, ['idEstrangeiro'], '')
+        if self._idEstrangeiro == '' or self._idEstrangeiro is None:
             self._inscricaoFederal = cnpj if cnpj != '' else cpf
             self._tipoInscricaoFederal = 'CNPJ' if cnpj != '' else 'CPF'
         else:
