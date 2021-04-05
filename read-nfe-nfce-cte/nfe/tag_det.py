@@ -17,6 +17,7 @@ class TagDet():
     def getData(self):
         for key, dataTagDet in enumerate(self._listDataTagDet):
 
+            self._objDet['numero_item'] = key + 1
             self._objDet['codigo_produto'] = returnDataInDictOrArray(dataTagDet, ['prod', 'cProd'])
             self._objDet['nome_produto'] = returnDataInDictOrArray(dataTagDet, ['prod', 'xProd'])
             self._objDet['global_trade_item_number'] = returnDataInDictOrArray(dataTagDet, ['prod', 'cEAN'])
