@@ -4,7 +4,7 @@ import sys
 dirNameSrc = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 sys.path.append(dirNameSrc)
 
-from utils.functions import returnDataInDictOrArray, treatsFieldAsNumber
+from utils.functions import returnDataInDictOrArray, treatsFieldAsNumber, treatsFieldAsText
 from typing import Dict
 
 
@@ -34,7 +34,7 @@ class TagDest():
         self._objDestinatario['inscricao_federal'] = self._inscricaoFederal
         self._objDestinatario['tipo_inscricao_federal'] = self._tipoInscricaoFederal
         self._objDestinatario['id_estrangeiro'] = self._idEstrangeiro
-        self._objDestinatario['razao_social'] = returnDataInDictOrArray(self._dataTagDest, ['xNome'])
+        self._objDestinatario['razao_social'] = treatsFieldAsText(returnDataInDictOrArray(self._dataTagDest, ['xNome']))
         self._objDestinatario['indicador_inscricao_estadual'] = treatsFieldAsNumber(
             returnDataInDictOrArray(self._dataTagDest, ['indIEDest']), True)
         self._objDestinatario['inscricao_estadual'] = returnDataInDictOrArray(self._dataTagDest, ['IE'])

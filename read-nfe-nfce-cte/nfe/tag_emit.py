@@ -4,7 +4,7 @@ import sys
 dirNameSrc = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 sys.path.append(dirNameSrc)
 
-from utils.functions import returnDataInDictOrArray, treatsFieldAsNumber
+from utils.functions import returnDataInDictOrArray, treatsFieldAsNumber, treatsFieldAsText
 from typing import Dict
 
 
@@ -28,8 +28,8 @@ class TagEmit():
 
         self._objEmitente['inscricao_federal'] = self._inscricaoFederal
         self._objEmitente['tipo_inscricao_federal'] = self._tipoInscricaoFederal
-        self._objEmitente['razao_social'] = returnDataInDictOrArray(self._dataTagEmit, ['xNome'])
-        self._objEmitente['nome_fantasia'] = returnDataInDictOrArray(self._dataTagEmit, ['xFant'])
+        self._objEmitente['razao_social'] = treatsFieldAsText(returnDataInDictOrArray(self._dataTagEmit, ['xNome']))
+        self._objEmitente['nome_fantasia'] = treatsFieldAsText(returnDataInDictOrArray(self._dataTagEmit, ['xFant']))
         self._objEmitente['inscricao_estadual'] = returnDataInDictOrArray(self._dataTagEmit, ['IE'])
         self._objEmitente['regime_empresa'] = treatsFieldAsNumber(returnDataInDictOrArray(self._dataTagEmit, ['CRT']), True)
         self._objEmitente['endereco'] = self._getAddress()
