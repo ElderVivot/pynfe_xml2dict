@@ -14,7 +14,7 @@ class TagIde():
         self._objIde: Dict[str, str] = {}
 
     def getData(self):
-        self._objIde['numero_nf']: int = treatsFieldAsNumber(returnDataInDictOrArray(self._dataTagIde, ['nNF']))
+        self._objIde['numero_nf'] = treatsFieldAsNumber(returnDataInDictOrArray(self._dataTagIde, ['nNF']))
         self._objIde['modelo_nf'] = treatsFieldAsNumber(returnDataInDictOrArray(self._dataTagIde, ['mod']))
         self._objIde['serie_nf'] = returnDataInDictOrArray(self._dataTagIde, ['serie'])
         self._objIde['data_emissao'] = returnDataInDictOrArray(self._dataTagIde, ['dhEmi'])

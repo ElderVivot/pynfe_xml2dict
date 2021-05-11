@@ -4,7 +4,7 @@ import sys
 dirNameSrc = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..')
 sys.path.append(dirNameSrc)
 
-from utils.functions import returnDataInDictOrArray, treatsFieldAsNumber, treatsFieldAsDecimal
+from utils.functions import returnDataInDictOrArray, treatsFieldAsNumber, treatsFieldAsDecimal, treatsFieldAsText
 from typing import Dict, List, OrderedDict
 
 
@@ -19,7 +19,7 @@ class TagDet():
 
             self._objDet['numero_item'] = key + 1
             self._objDet['codigo_produto'] = returnDataInDictOrArray(dataTagDet, ['prod', 'cProd'])
-            self._objDet['nome_produto'] = returnDataInDictOrArray(dataTagDet, ['prod', 'xProd'])
+            self._objDet['nome_produto'] = treatsFieldAsText(returnDataInDictOrArray(dataTagDet, ['prod', 'xProd']))
             self._objDet['global_trade_item_number'] = returnDataInDictOrArray(dataTagDet, ['prod', 'cEAN'])
             self._objDet['ncm'] = returnDataInDictOrArray(dataTagDet, ['prod', 'NCM'])
             self._objDet['cfop'] = treatsFieldAsNumber(returnDataInDictOrArray(dataTagDet, ['prod', 'CFOP']))
@@ -27,7 +27,7 @@ class TagDet():
             self._objDet['quantidade'] = treatsFieldAsDecimal(returnDataInDictOrArray(dataTagDet, ['prod', 'qCom']), 4)
             self._objDet['valor_unitario'] = treatsFieldAsDecimal(returnDataInDictOrArray(dataTagDet, ['prod', 'vUnCom']), 10)
             self._objDet['valor_total'] = treatsFieldAsDecimal(returnDataInDictOrArray(dataTagDet, ['prod', 'vProd']), 10)
-            self._objDet['informacao_adicionais'] = returnDataInDictOrArray(dataTagDet, ['infAdProd'])
+            self._objDet['informacao_adicionais'] = treatsFieldAsText(returnDataInDictOrArray(dataTagDet, ['infAdProd']))
 
             self._objListTagDet.append(self._objDet.copy())
             self._objDet.clear()
