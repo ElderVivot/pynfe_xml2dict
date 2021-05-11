@@ -15,13 +15,27 @@ def getDateTimeNowInFormatStr():
     return dateTimeObj.strftime("%Y_%m_%d_%H_%M")
 
 
-def removeCharsSpecial(palavra):
-    # Unicode normalize transforma um caracter em seu equivalente em latin.
-    nfkd = unicodedata.normalize('NFKD', palavra).encode('ASCII', 'ignore').decode('ASCII')
-    palavraTratada = u"".join([c for c in nfkd if not unicodedata.combining(c)])
+def removeCharsSpecialTwo(text: str):
+    charSpecials = '!+:>;<=)?$(/*@#$?|'
+    for char in charSpecials:
+        text = text.replace(char, '')
+    return text
 
-    # Usa expressão regular para retornar a palavra apenas com valores corretos
-    return re.sub('[^a-zA-Z0-9.!+:><=)?$(/*,-_ \\]', '', palavraTratada)
+
+def removeCharsSpecial(text: str):
+    try:
+        text = text.replace('[', '')
+        text = text.replace(']', '')
+        # Unicode normalize transforma um caracter em seu equivalente em latin.
+        nfkd = unicodedata.normalize('NFKD', text).encode('ASCII', 'ignore').decode('ASCII')
+        text = u"".join([c for c in nfkd if not unicodedata.combining(c)])
+
+        # Usa expressão regular para retornar a palavra apenas com valores corretos
+        text = re.sub('[^a-zA-Z0-9.!+:>;<=)?$(/*,-_ \\]', '', text)
+        return text
+    except Exception:
+        text = removeCharsSpecialTwo(text)
+        return text
 
 
 def minimalizeSpaces(text):
