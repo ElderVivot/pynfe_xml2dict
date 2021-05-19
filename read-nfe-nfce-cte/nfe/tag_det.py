@@ -14,6 +14,10 @@ class TagDet():
         self._objListTagDet: List[Dict[str, str]] = []
         self._objDet: Dict[str, str] = {}
 
+    def __amountValorContabil(self):
+        return self._objDet['valor_produto'] + self._objDet['valor_frete'] + self._objDet['vseg'] \
+            + self._objDet['valor_outros'] - self._objDet['valor_desconto']
+
     def getData(self):
         for key, dataTagDet in enumerate(self._listDataTagDet):
 
@@ -26,7 +30,12 @@ class TagDet():
             self._objDet['unidade'] = returnDataInDictOrArray(dataTagDet, ['prod', 'uCom'])
             self._objDet['quantidade'] = treatsFieldAsDecimal(returnDataInDictOrArray(dataTagDet, ['prod', 'qCom']), 4)
             self._objDet['valor_unitario'] = treatsFieldAsDecimal(returnDataInDictOrArray(dataTagDet, ['prod', 'vUnCom']), 10)
-            self._objDet['valor_total'] = treatsFieldAsDecimal(returnDataInDictOrArray(dataTagDet, ['prod', 'vProd']), 10)
+            self._objDet['valor_produto'] = treatsFieldAsDecimal(returnDataInDictOrArray(dataTagDet, ['prod', 'vProd']), 10)
+            self._objDet['valor_frete'] = treatsFieldAsDecimal(returnDataInDictOrArray(dataTagDet, ['prod', 'vFrete']), 10)
+            self._objDet['vseg'] = treatsFieldAsDecimal(returnDataInDictOrArray(dataTagDet, ['prod', 'vSeg']), 10)
+            self._objDet['valor_outros'] = treatsFieldAsDecimal(returnDataInDictOrArray(dataTagDet, ['prod', 'vOutro']), 10)
+            self._objDet['valor_desconto'] = treatsFieldAsDecimal(returnDataInDictOrArray(dataTagDet, ['prod', 'vDesc']), 10)
+            self._objDet['valor_total'] = self.__amountValorContabil()
             self._objDet['informacao_adicionais'] = treatsFieldAsText(returnDataInDictOrArray(dataTagDet, ['infAdProd']))
 
             self._objListTagDet.append(self._objDet.copy())
