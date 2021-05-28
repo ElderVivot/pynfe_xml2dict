@@ -26,7 +26,7 @@ class TagDet():
             self._objDet['nome_produto'] = treatsFieldAsText(returnDataInDictOrArray(dataTagDet, ['prod', 'xProd']))
             self._objDet['global_trade_item_number'] = returnDataInDictOrArray(dataTagDet, ['prod', 'cEAN'])
             self._objDet['ncm'] = returnDataInDictOrArray(dataTagDet, ['prod', 'NCM'])
-            self._objDet['cfop'] = treatsFieldAsNumber(returnDataInDictOrArray(dataTagDet, ['prod', 'CFOP']))
+            self._objDet['cfop'] = treatsFieldAsNumber(returnDataInDictOrArray(dataTagDet, ['prod', 'CFOP']), isInt=True)
             self._objDet['unidade'] = returnDataInDictOrArray(dataTagDet, ['prod', 'uCom'])
             self._objDet['quantidade'] = treatsFieldAsDecimal(returnDataInDictOrArray(dataTagDet, ['prod', 'qCom']), 4)
             self._objDet['valor_unitario'] = treatsFieldAsDecimal(returnDataInDictOrArray(dataTagDet, ['prod', 'vUnCom']), 10)
