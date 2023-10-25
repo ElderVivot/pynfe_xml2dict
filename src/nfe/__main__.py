@@ -71,5 +71,5 @@ class IndexNfe():
 
 
 if __name__ == '__main__':
-    indexNfe = IndexNfe('/home/eldervivot/Programming/microservices/read-xml-nfe-nfce-cte/data/nfe2.xml')
+    indexNfe = IndexNfe('/home/eldervivot/Programming/services/read-xml-nfe-nfce-cte/data/52230144050361000118550010000000301129015813.xml')
     print(json.dumps(indexNfe.process(), indent=4))

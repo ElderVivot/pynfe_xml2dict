@@ -4,10 +4,10 @@ version = "0.1.0"
 description = "Leitura de XML referente a notas fiscais NF-e, NFC-e e CT-e"
 authors = ["ElderVivot <eldervivot@gmail.com>"]
 license = "MIT"
-pa
 
 [tool.poetry.dependencies]
 python = "^3.8"
+xmltodict = "^0.13.0"
 
 [tool.poetry.dev-dependencies]
 
