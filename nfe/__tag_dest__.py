@@ -1,9 +1,3 @@
-import os
-import sys
-
-dirNameSrc = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
-sys.path.append(dirNameSrc)
-
 from utils.functions import returnDataInDictOrArray, treatsFieldAsNumber, treatsFieldAsText
 from typing import Dict
 

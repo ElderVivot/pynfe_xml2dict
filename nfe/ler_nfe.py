@@ -1,15 +1,14 @@
 from typing import Union, Dict
-import json
 
 from utils.functions import returnDataInDictOrArray
 from utils.read_xml import readXml
-from nfe.tag_ide import TagIde
-from nfe.tag_emit import TagEmit
-from nfe.tag_dest import TagDest
-from nfe.tag_det import TagDet
+from nfe.__tag_ide__ import TagIde
+from nfe.__tag_emit__ import TagEmit
+from nfe.__tag_dest__ import TagDest
+from nfe.__tag_det__ import TagDet
 
 
-class MainNfe():
+class LerNfe():
     def __init__(self, pathXml: str):
         self.__dataXml = readXml(pathXml)
         self.__objNf: Dict['str', dict] = {}

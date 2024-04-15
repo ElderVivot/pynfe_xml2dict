@@ -1,9 +1,9 @@
 import json
 # from xml.etree import ElementTree
-from nfe.__main__ import MainNfe
+from nfe.ler_nfe import LerNfe
 
-# indexNfe = MainNfe('_data/xml_complete.xml')
-# print(json.dumps(indexNfe.process(), indent=4))
+indexNfe = LerNfe('_data/xml_complete.xml')
+print(json.dumps(indexNfe.process(), indent=4))
 
 
 # TESTING WITH NAMESPACE - DONT WORK YET
