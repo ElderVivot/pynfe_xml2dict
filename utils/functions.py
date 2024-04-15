@@ -4,17 +4,6 @@ import datetime
 from typing import List, Any
 
 
-def getOnlyNameFile(nameFileOriginal):
-    nameFileSplit = nameFileOriginal.split('.')
-    nameFile = '.'.join(nameFileSplit[:-1])
-    return nameFile
-
-
-def getDateTimeNowInFormatStr():
-    dateTimeObj = datetime.datetime.now()
-    return dateTimeObj.strftime("%Y_%m_%d_%H_%M")
-
-
 def removeCharsSpecialTwo(text: str):
     charSpecials = '!+:>;<=)?$(/*@#$?|'
     for char in charSpecials:

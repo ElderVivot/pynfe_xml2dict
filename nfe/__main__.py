@@ -15,7 +15,7 @@ from nfe.tag_dest import TagDest
 from nfe.tag_det import TagDet
 
 
-class IndexNfe():
+class MainNfe():
     def __init__(self, pathXml: str):
         self._dataXml = readXml(pathXml)
         self._objNf: Dict['str', dict] = {}
