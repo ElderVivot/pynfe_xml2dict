@@ -4,7 +4,7 @@ import sys
 dirNameSrc = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 sys.path.append(dirNameSrc)
 
-from utils.functions import returnDataInDictOrArray, treatsFieldAsNumber
+from pynfe_xml2dict.utils.functions import returnDataInDictOrArray, treatsFieldAsNumber
 from typing import Dict
 
 

@@ -1,12 +1,14 @@
 [tool.poetry]
-name = "read-xml-nfe-nfce-cte"
-version = "0.1.0"
-description = "Leitura de XML referente a notas fiscais NF-e, NFC-e e CT-e"
+name = "pynfe_xml2dict"
+version = "0.0.3"
+description = "Leitura de XML referente a notas fiscais NF-e, NFC-e e CT-e para dicionário"
 authors = ["ElderVivot <eldervivot@gmail.com>"]
 license = "MIT"
+readme = "README.md"
+keywords = ["python", "nfe", "xml"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.10"
 xmltodict = "^0.13.0"
 
 [tool.poetry.dev-dependencies]

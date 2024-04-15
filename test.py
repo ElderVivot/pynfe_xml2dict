@@ -1,6 +1,6 @@
 import json
 # from xml.etree import ElementTree
-from nfe.ler_nfe import LerNfe
+from pynfe_xml2dict.nfe.ler_nfe import LerNfe
 
 indexNfe = LerNfe('_data/xml_complete.xml')
 print(json.dumps(indexNfe.process(), indent=4))

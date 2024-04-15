@@ -17,3 +17,14 @@ def readXml(filePath: str) -> dict:
     except Exception as e:
         print(e)
         return {}
+
+
+def readXmlFromStr(xml: str) -> dict:
+    """
+    # :xml is str xml data
+    """
+    try:
+        return xmldict.parse(xml)
+    except Exception as e:
+        print(e)
+        return {}

@@ -1,16 +1,22 @@
 from typing import Union, Dict
 
-from utils.functions import returnDataInDictOrArray
-from utils.read_xml import readXml
-from nfe.__tag_ide__ import TagIde
-from nfe.__tag_emit__ import TagEmit
-from nfe.__tag_dest__ import TagDest
-from nfe.__tag_det__ import TagDet
+from pynfe_xml2dict.utils.functions import returnDataInDictOrArray
+from pynfe_xml2dict.utils.read_xml import readXml, readXmlFromStr
+from .__tag_ide__ import TagIde
+from .__tag_emit__ import TagEmit
+from .__tag_dest__ import TagDest
+from .__tag_det__ import TagDet
 
 
 class LerNfe():
-    def __init__(self, pathXml: str):
-        self.__dataXml = readXml(pathXml)
+    def __init__(self, pathXml: str = None, xmlData: str = None):
+        if pathXml is None and xmlData is not None:
+            self.__dataXml = readXmlFromStr(xmlData)
+        elif pathXml is not None:
+            self.__dataXml = readXml(pathXml)
+        else:
+            raise Exception('Its necessary pass as argument pathXml or xmlData')
+
         self.__objNf: Dict['str', dict] = {}
 
     def __isNfe(self):
