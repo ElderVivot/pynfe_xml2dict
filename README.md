@@ -1,0 +1,1 @@
+Projeto pra ler XMLs de notas fiscais modelo NF-e, CT-e, NFC-e e transformar num dicionário

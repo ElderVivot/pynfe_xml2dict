@@ -10,35 +10,35 @@ from typing import Dict
 
 class TagDest():
     def __init__(self, dataTagDest: dict):
-        self._dataTagDest = dataTagDest
-        self._objDestinatario: Dict[str, str] = {}
+        self.__dataTagDest = dataTagDest
+        self.__objDestinatario: Dict[str, str] = {}
 
-    def _getCnpjOrCpf(self):
-        cnpj = returnDataInDictOrArray(self._dataTagDest, ['CNPJ'])
-        cpf = returnDataInDictOrArray(self._dataTagDest, ['CPF'])
-        self._idEstrangeiro = returnDataInDictOrArray(self._dataTagDest, ['idEstrangeiro'], '')
-        if self._idEstrangeiro == '' or self._idEstrangeiro is None:
-            self._inscricaoFederal = cnpj if cnpj != '' else cpf
-            self._tipoInscricaoFederal = 'CNPJ' if cnpj != '' else 'CPF'
+    def __getCnpjOrCpf(self):
+        cnpj = returnDataInDictOrArray(self.__dataTagDest, ['CNPJ'])
+        cpf = returnDataInDictOrArray(self.__dataTagDest, ['CPF'])
+        self.__idEstrangeiro = returnDataInDictOrArray(self.__dataTagDest, ['idEstrangeiro'], '')
+        if self.__idEstrangeiro == '' or self.__idEstrangeiro is None:
+            self.__inscricaoFederal = cnpj if cnpj != '' else cpf
+            self.__tipoInscricaoFederal = 'CNPJ' if cnpj != '' else 'CPF'
         else:
-            self._inscricaoFederal = ''
-            self._tipoInscricaoFederal = ''
+            self.__inscricaoFederal = ''
+            self.__tipoInscricaoFederal = ''
 
-    def _getAddress(self):
+    def __getAddress(self):
         # implement to get this information
         return {}
 
     def getData(self) -> dict:
-        self._getCnpjOrCpf()
+        self.__getCnpjOrCpf()
 
-        self._objDestinatario['inscricao_federal'] = self._inscricaoFederal
-        self._objDestinatario['tipo_inscricao_federal'] = self._tipoInscricaoFederal
-        self._objDestinatario['id_estrangeiro'] = self._idEstrangeiro
-        self._objDestinatario['razao_social'] = treatsFieldAsText(returnDataInDictOrArray(self._dataTagDest, ['xNome']))
-        self._objDestinatario['indicador_inscricao_estadual'] = treatsFieldAsNumber(
-            returnDataInDictOrArray(self._dataTagDest, ['indIEDest']), True)
-        self._objDestinatario['inscricao_estadual'] = returnDataInDictOrArray(self._dataTagDest, ['IE'])
-        self._objDestinatario['inscricao_municipal'] = returnDataInDictOrArray(self._dataTagDest, ['IM'])
-        self._objDestinatario['endereco'] = self._getAddress()
+        self.__objDestinatario['inscricao_federal'] = self.__inscricaoFederal
+        self.__objDestinatario['tipo_inscricao_federal'] = self.__tipoInscricaoFederal
+        self.__objDestinatario['id_estrangeiro'] = self.__idEstrangeiro
+        self.__objDestinatario['razao_social'] = treatsFieldAsText(returnDataInDictOrArray(self.__dataTagDest, ['xNome']))
+        self.__objDestinatario['indicador_inscricao_estadual'] = treatsFieldAsNumber(
+            returnDataInDictOrArray(self.__dataTagDest, ['indIEDest']), True)
+        self.__objDestinatario['inscricao_estadual'] = returnDataInDictOrArray(self.__dataTagDest, ['IE'])
+        self.__objDestinatario['inscricao_municipal'] = returnDataInDictOrArray(self.__dataTagDest, ['IM'])
+        self.__objDestinatario['endereco'] = self.__getAddress()
 
-        return self._objDestinatario
+        return self.__objDestinatario

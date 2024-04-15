@@ -10,28 +10,28 @@ from typing import Dict
 
 class TagEmit():
     def __init__(self, dataTagEmit: dict):
-        self._dataTagEmit = dataTagEmit
-        self._objEmitente: Dict[str, str] = {}
+        self.__dataTagEmit = dataTagEmit
+        self.__objEmitente: Dict[str, str] = {}
 
-    def _getCnpjOrCpf(self):
-        cnpj = returnDataInDictOrArray(self._dataTagEmit, ['CNPJ'])
-        cpf = returnDataInDictOrArray(self._dataTagEmit, ['CPF'])
-        self._inscricaoFederal = cnpj if cnpj != '' else cpf
-        self._tipoInscricaoFederal = 'CNPJ' if cnpj != '' else 'CPF'
+    def __getCnpjOrCpf(self):
+        cnpj = returnDataInDictOrArray(self.__dataTagEmit, ['CNPJ'])
+        cpf = returnDataInDictOrArray(self.__dataTagEmit, ['CPF'])
+        self.__inscricaoFederal = cnpj if cnpj != '' else cpf
+        self.__tipoInscricaoFederal = 'CNPJ' if cnpj != '' else 'CPF'
 
-    def _getAddress(self):
+    def __getAddress(self):
         # implement to get this information
         return {}
 
     def getData(self) -> dict:
-        self._getCnpjOrCpf()
+        self.__getCnpjOrCpf()
 
-        self._objEmitente['inscricao_federal'] = self._inscricaoFederal
-        self._objEmitente['tipo_inscricao_federal'] = self._tipoInscricaoFederal
-        self._objEmitente['razao_social'] = treatsFieldAsText(returnDataInDictOrArray(self._dataTagEmit, ['xNome']))
-        self._objEmitente['nome_fantasia'] = treatsFieldAsText(returnDataInDictOrArray(self._dataTagEmit, ['xFant']))
-        self._objEmitente['inscricao_estadual'] = returnDataInDictOrArray(self._dataTagEmit, ['IE'])
-        self._objEmitente['regime_empresa'] = treatsFieldAsNumber(returnDataInDictOrArray(self._dataTagEmit, ['CRT']), True)
-        self._objEmitente['endereco'] = self._getAddress()
+        self.__objEmitente['inscricao_federal'] = self.__inscricaoFederal
+        self.__objEmitente['tipo_inscricao_federal'] = self.__tipoInscricaoFederal
+        self.__objEmitente['razao_social'] = treatsFieldAsText(returnDataInDictOrArray(self.__dataTagEmit, ['xNome']))
+        self.__objEmitente['nome_fantasia'] = treatsFieldAsText(returnDataInDictOrArray(self.__dataTagEmit, ['xFant']))
+        self.__objEmitente['inscricao_estadual'] = returnDataInDictOrArray(self.__dataTagEmit, ['IE'])
+        self.__objEmitente['regime_empresa'] = treatsFieldAsNumber(returnDataInDictOrArray(self.__dataTagEmit, ['CRT']), True)
+        self.__objEmitente['endereco'] = self.__getAddress()
 
-        return self._objEmitente
+        return self.__objEmitente

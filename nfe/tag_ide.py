@@ -10,20 +10,20 @@ from typing import Dict
 
 class TagIde():
     def __init__(self, dataTagIde: dict):
-        self._dataTagIde = dataTagIde
-        self._objIde: Dict[str, str] = {}
+        self.__dataTagIde = dataTagIde
+        self.__objIde: Dict[str, str] = {}
 
     def getData(self):
-        self._objIde['numero_nf'] = treatsFieldAsNumber(returnDataInDictOrArray(self._dataTagIde, ['nNF']))
-        self._objIde['modelo_nf'] = treatsFieldAsNumber(returnDataInDictOrArray(self._dataTagIde, ['mod']))
-        self._objIde['serie_nf'] = returnDataInDictOrArray(self._dataTagIde, ['serie'])
-        self._objIde['data_emissao'] = returnDataInDictOrArray(self._dataTagIde, ['dhEmi'])
-        self._objIde['data_saida_entrada'] = returnDataInDictOrArray(self._dataTagIde, ['dhSaiEnt'])
-        self._objIde['tipo_documento'] = treatsFieldAsNumber(returnDataInDictOrArray(self._dataTagIde, 'tpNF'))
-        self._objIde['identificador_local_destino_operacao'] = treatsFieldAsNumber(
-            returnDataInDictOrArray(self._dataTagIde, ['idDest']))
-        self._objIde['municipio_ocorrencia_fato'] = treatsFieldAsNumber(
-            returnDataInDictOrArray(self._dataTagIde, ['cMunFG']))
-        self._objIde['finalidade_nf'] = treatsFieldAsNumber(returnDataInDictOrArray(self._dataTagIde, ['finNFe']))
+        self.__objIde['numero_nf'] = treatsFieldAsNumber(returnDataInDictOrArray(self.__dataTagIde, ['nNF']))
+        self.__objIde['modelo_nf'] = treatsFieldAsNumber(returnDataInDictOrArray(self.__dataTagIde, ['mod']))
+        self.__objIde['serie_nf'] = returnDataInDictOrArray(self.__dataTagIde, ['serie'])
+        self.__objIde['data_emissao'] = returnDataInDictOrArray(self.__dataTagIde, ['dhEmi'])
+        self.__objIde['data_saida_entrada'] = returnDataInDictOrArray(self.__dataTagIde, ['dhSaiEnt'])
+        self.__objIde['tipo_documento'] = treatsFieldAsNumber(returnDataInDictOrArray(self.__dataTagIde, 'tpNF'))
+        self.__objIde['identificador_local_destino_operacao'] = treatsFieldAsNumber(
+            returnDataInDictOrArray(self.__dataTagIde, ['idDest']))
+        self.__objIde['municipio_ocorrencia_fato'] = treatsFieldAsNumber(
+            returnDataInDictOrArray(self.__dataTagIde, ['cMunFG']))
+        self.__objIde['finalidade_nf'] = treatsFieldAsNumber(returnDataInDictOrArray(self.__dataTagIde, ['finNFe']))
 
-        return self._objIde
+        return self.__objIde
