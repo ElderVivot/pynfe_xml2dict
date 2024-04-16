@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pynfe_xml2dict"
-version = "0.0.3"
+version = "0.0.4"
 description = "Leitura de XML referente a notas fiscais NF-e, NFC-e e CT-e para dicionário"
 authors = ["ElderVivot <eldervivot@gmail.com>"]
 license = "MIT"

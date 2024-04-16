@@ -1,11 +1,5 @@
-import os
-import sys
-
-dirNameSrc = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..')
-sys.path.append(dirNameSrc)
-
-from utils.functions import returnDataInDictOrArray, treatsFieldAsNumber, treatsFieldAsDecimal, treatsFieldAsText
 from typing import Dict, List, OrderedDict
+from pynfe_xml2dict.utils.functions import returnDataInDictOrArray, treatsFieldAsNumber, treatsFieldAsDecimal, treatsFieldAsText
 
 
 class TagDet():

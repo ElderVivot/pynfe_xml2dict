@@ -1,5 +1,5 @@
-from utils.functions import returnDataInDictOrArray, treatsFieldAsNumber, treatsFieldAsText
 from typing import Dict
+from pynfe_xml2dict.utils.functions import returnDataInDictOrArray, treatsFieldAsNumber, treatsFieldAsText
 
 
 class TagDest():
